@@ -1,12 +1,13 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require("path");
 
 module.exports = {
   entry: "./src/app.js",
   output: {
-    path: path.resolve("dist"),
-    filename: "app.bundle.js"
+    filename: "app.bundle.js",
+    path: path.resolve(__dirname, "dist"),
+    publicPath: "/"
   },
   module: {
     rules: [
@@ -15,10 +16,25 @@ module.exports = {
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: ["css-loader", "sass-loader"],
-          publicPath: "/dist"
+          // this overwrites the `publicPath` that's mentioned at the top
+          // or else you'd have `assets/assets/image/slkfdjskldf.png`
+          // in your css url(..)
+          publicPath: "/"
         })
       }
     ]
+  },
+  devServer: {
+    // Content not from webpack is served from
+    contentBase: path.join(__dirname, "dist"),
+    // Enable gzip
+    compress: true,
+    // Web server port
+    port: 9000,
+    // Show errors only on log
+    stats: "errors-only",
+    // Open browser
+    open: true
   },
   plugins: [
     new HtmlWebpackPlugin({
