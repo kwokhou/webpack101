@@ -42,6 +42,7 @@ module.exports = {
     open: true
   },
   plugins: [
+    // This is a webpack plugin that simplifies creation of HTML files to serve your webpack bundles.
     new HtmlWebpackPlugin({
       title: "Webpack 102 Tutorial",
       // minify: {
