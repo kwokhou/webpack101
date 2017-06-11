@@ -4,7 +4,7 @@
   "description": "Testing Webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack -d --watch"
   },
   "author": "Andy Yong <kwokhou@gmail.com> (https://twitter.com/kwokhou)",
   "license": "MIT",
