@@ -4,11 +4,13 @@
   "description": "Testing Webpack",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d --watch"
+    "dev": "webpack -d --watch",
+    "prod": "webpack -p"
   },
   "author": "Andy Yong <kwokhou@gmail.com> (https://twitter.com/kwokhou)",
   "license": "MIT",
   "devDependencies": {
+    "html-webpack-plugin": "^2.28.0",
     "webpack": "^2.6.1"
   }
 }
