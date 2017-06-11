@@ -21,6 +21,11 @@ module.exports = {
           // in your css url(..)
           publicPath: "/"
         })
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
       }
     ]
   },
