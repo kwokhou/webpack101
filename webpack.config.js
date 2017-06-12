@@ -16,6 +16,7 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: ["css-loader", "sass-loader"],
@@ -29,6 +30,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"]
+      },
+      {
+        test: /\.pug$/,
+        exclude: /node_modules/,
+        use: ["pug-loader"]
       }
     ]
   },
@@ -53,14 +59,14 @@ module.exports = {
       // },
       excludeChunks: ["contact"],
       hash: true,
-      template: "./src/index.ejs" // Load a custom template (ejs by default see the FAQ for details)
+      template: "./src/index.pug" // Load a custom template (ejs by default see the FAQ for details)
     }),
     new HtmlWebpackPlugin({
       title: "Contact",
       hash: true,
       chunks: ["contact"],
       filename: "contact.html",
-      template: "./src/contact.ejs" // Load a custom template (ejs by default see the FAQ for details)
+      template: "./src/contact.pug" // Load a custom template (ejs by default see the FAQ for details)
     }),
     new ExtractTextPlugin({
       filename: "app.css",
